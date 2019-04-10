@@ -1,13 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpackMerge = require('webpack-merge')
-const baseConfig = require('./base.config')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-/*  
-  学习webpack官网：https://webpack.docschina.org/concepts/
-  改过这些配置后要重新npm run start
-*/
-const devConfig = {
+const prodConfig = {
   entry: {
     app: path.resolve(__dirname, '../app/index.js'),
   },
@@ -22,7 +17,10 @@ const devConfig = {
       inject: 'body',
       filename: 'index.html',
     }),
+    new UglifyJsPlugin({
+      test: /\.js($|\?)/i,
+    }),
   ],
 }
 
-module.exports = webpackMerge(baseConfig, devConfig)
+module.exports = prodConfig
