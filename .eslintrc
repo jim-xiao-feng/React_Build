@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "env": {
     "jest": true,
     "node": true,
@@ -34,6 +34,16 @@
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "curly": ["error", "multi-line"],
     "arrow-parens": ["error", "as-needed"],
+
+    "react/no-unescaped-entities": "off",
+    "react/no-deprecated": "off",
+    "react/jsx-curly-spacing": ["error", "never"],
+    "react/display-name": "off",
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-equals-spacing": ["error", "never"],
     "prefer-const": ["error", {
       "destructuring": "any",
       "ignoreReadBeforeAssign": false

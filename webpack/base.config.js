@@ -15,9 +15,21 @@ module.exports = {
       use: {                    // 用于轉換es6,依赖@babel/core @babel/preset-env
         loader: 'babel-loader', // 配置见https://www.npmjs.com/package/babel-loader
         options: {
-          presets: ['@babel/preset-env'],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader',
+    }, {
+      test: /\.less/,
+      loader: 'style-loader!css-loader!less-loader',
+    }, {
+      test: /\.(png|jpg|gif|svg)/,
+      loader: 'url-loader?limit=8192',
     }],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css', '.less'],
   },
 }
