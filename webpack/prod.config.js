@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpackMerge = require('webpack-merge')
+const baseConfig = require('./base.config')
 
 const prodConfig = {
   entry: {
@@ -8,7 +10,7 @@ const prodConfig = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',    // 緩存
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -23,4 +25,4 @@ const prodConfig = {
   ],
 }
 
-module.exports = prodConfig
+module.exports = webpackMerge(baseConfig, prodConfig)

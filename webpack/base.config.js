@@ -1,4 +1,6 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -7,6 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css', '.less'],
   },
   module: {
     rules: [{
@@ -19,5 +24,19 @@ module.exports = {
         },
       },
     }],
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'webpack入门',
+      template: 'app/index.html',   // 采用本地的template（默认会生成）
+      inject: 'body',
+      filename: 'index.html',
+    }),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',  // async異步，all同步異步都分割
+    },
   },
 }
