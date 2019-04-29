@@ -1,4 +1,6 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -32,4 +34,18 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.css', '.less'],
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'react_build',
+      template: 'app/index.html',   // 采用本地的template（默认会生成）
+      inject: 'body',
+      filename: 'index.html',
+    }),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    }
+  }
 }
