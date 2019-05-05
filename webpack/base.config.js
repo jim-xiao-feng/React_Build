@@ -21,6 +21,7 @@ module.exports = {
         loader: 'babel-loader', // 配置见https://www.npmjs.com/package/babel-loader
         options: {
           presets: ['@babel/preset-env'],
+          plugins: ['@babel/plugin-syntax-dynamic-import'],   // 可以使用动态import懒加载
         },
       },
     }],

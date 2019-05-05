@@ -5,6 +5,7 @@ const webpackMerge = require('webpack-merge')
 const baseConfig = require('./base.config')
 
 const prodConfig = {
+  mode: 'production',
   entry: {
     app: path.resolve(__dirname, '../app/index.js'),
   },
