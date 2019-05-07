@@ -1,10 +1,10 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpackMerge = require('webpack-merge')
 const baseConfig = require('./base.config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const prodConfig = {
+  mode: 'production',
   entry: {
     app: path.resolve(__dirname, '../app/index.js'),
   },
@@ -13,16 +13,19 @@ const prodConfig = {
     filename: '[name].[contenthash].js',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'webpack入门',
-      template: 'app/index.html',   // 采用本地的template（默认会生成）
-      inject: 'body',
-      filename: 'index.html',
-    }),
-    new UglifyJsPlugin({
-      test: /\.js($|\?)/i,
-    }),
+    new MiniCssExtractPlugin({      // 分离css代码
+      filename: 'css/[name].css',
+    })
   ],
+  module: {
+    rules: [{
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }, {
+        test: /\.less$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+    }]
+  }
 }
 
 module.exports = webpackMerge(baseConfig, prodConfig)
