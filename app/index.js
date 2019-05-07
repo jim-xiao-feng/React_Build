@@ -1,3 +1,5 @@
+import { add } from './utils/math'
+
 class App {
   constructor() {
     document.addEventListener('click', () => {
@@ -17,7 +19,7 @@ class App {
   }
 
   render() {
-    document.getElementById('app').innerText = 'webpack入门'
+    document.getElementById('app').innerText = 'webpack入门' + add(1, 3)
   }
 }
 
