@@ -7,7 +7,7 @@ module.exports = {
     vendor: ['babel-polyfill'],  // 提供promise加持
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].bundle.js',
   },
   resolve: {
@@ -39,5 +39,6 @@ module.exports = {
     splitChunks: {
       chunks: 'all',  // async異步，all同步異步都分割
     },
+    usedExports: true,
   },
 }

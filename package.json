@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "step1: webpack简单使用",
   "main": "index.js",
+  "sideEffects": [
+    "*.css",
+    "*.less"
+  ],
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --config webpack/dev.config.js",
-    "build": "webpack --config webpack/dev.config.js"
+    "build": "webpack --config webpack/prod.config.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +38,7 @@
     "clean-webpack-plugin": "^2.0.1",
     "eslint": "^5.16.0",
     "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.11",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",

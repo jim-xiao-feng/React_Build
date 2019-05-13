@@ -11,9 +11,9 @@ class App {
 
   getComponent() {
     // 懒加载
-    return import(/* webpackChunkName: 'lodash' */ 'lodash').then(({ default: _ }) => {
+    return import(/* webpackChunkName: 'lodash' */ 'lodash/join').then(({ default: { join } }) => {
       const element = document.createElement('div')
-      element.innerText = _.join(['hello', 'jim'], '-')
+      element.innerText = join(['hello', 'jim'], '-')
       return element
     })
   }
